@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre faire-part de mariage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        #mainImage {
+            width: 100%;
+            max-height: 800px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .thumbnail {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            margin: 0 10px;
+            cursor: pointer;
+            border: 2px solid #fff;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Notre faire-part de mariage</h1>
+    <div class="gallery">
+        <img id="mainImage" src="faire part-01.jpg" alt="Image principale du faire-part">
+        <div class="thumbnails">
+            <img src="faire part-01.jpg" alt="Faire-part 1" class="thumbnail" onclick="changeImage(this.src, 0)">
+            <img src="faire part-02.jpg" alt="Faire-part 2" class="thumbnail" onclick="changeImage(this.src, 1)">
+            <img src="faire part-03.jpg" alt="Faire-part 3" class="thumbnail" onclick="changeImage(this.src, 2)">
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "faire part-01.jpg",
+            "faire part-02.jpg",
+            "faire part-03.jpg"
+        ];
+        let currentIndex = 0;
+
+        function changeImage(src, index) {
+            document.getElementById('mainImage').src = src;
+            currentIndex = index;
+        }
+
+        document.getElementById('mainImage').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('mainImage').src = images[currentIndex];
+        });
+    </script>
+</body>
+</html>
